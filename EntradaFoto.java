@@ -1,39 +1,18 @@
-import java.util.*;
-import java.time.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
 
-public class EntradaFoto
+public class EntradaFoto extends EntradaConComentarios
 {
-    
-    private String usuario;
     private String urlImagen;
-    private String titulo;
-    private LocalDateTime momentoPublicacion;
-    private int cantidadMeGusta;
-    private ArrayList<String> comentarios;
-    
-    
+    private String titulo; 
+
     public EntradaFoto(String autor, String url, String titulo)
     {
-        usuario = autor;
+        super(autor);
         urlImagen = url;
         this.titulo = titulo;
-        momentoPublicacion = LocalDateTime.now();       
-    }
-
-    public void meGusta()
-    {
-        cantidadMeGusta = cantidadMeGusta + 1;
-    }
-    
-    public int getMeGusta()
-    {
-        return cantidadMeGusta;
-    }
-    
-    public void addComentario(String text)
-    {
-        comentarios.add(text);        
-    }
+    }    
     
     public String getUrlImagen()
     {
@@ -43,17 +22,39 @@ public class EntradaFoto
     public String getTituloImagen()
     {
         return titulo;
-    }
-    
-    public LocalDateTime getMomentoPublicacion()
-    {
-        return momentoPublicacion;        
-    }
-    
+    }    
+       
     public String toString()
     {
-        return "";
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.toString() + "\n";
+        
+        cadenaADevolver += titulo + "\n";
+        cadenaADevolver += urlImagen + "\n";
+                           
+        return cadenaADevolver;
     }
     
+    public String devolverHTML()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.devolverHTML() + "\n    <br/>";
+        
+        cadenaADevolver += "\n    <h3>" + titulo + "</h3>";
+        cadenaADevolver += "\n    <img src=\"" + urlImagen + "\"/>\n    <br/>";
+                           
+        return cadenaADevolver;     
+    }
     
+    public void mostrar()
+    {
+        System.out.println(this);
+    }
+    
+    public void mostrarHTML()
+    {
+        System.out.println(this.devolverHTML());        
+    }    
 }

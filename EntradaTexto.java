@@ -1,44 +1,51 @@
-import java.util.*;
-import java.time.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class EntradaTexto
+
+public class EntradaTexto extends EntradaConComentarios
 {
-    private String usuario;
     private String mensaje;
-    private LocalDateTime momentoPublicacion;
-    private int cantidadMeGusta;
-    private ArrayList<String> comentarios;
-    
+
     public EntradaTexto(String autor, String texto)
     {
-        usuario = autor;
+        super(autor);
         mensaje = texto;
-        momentoPublicacion = LocalDateTime.now();
     }
-    
-    public void meGusta()
-    {
-        cantidadMeGusta = cantidadMeGusta + 1;
-    }
-    
-    public int getMeGusta()
-    {
-        return cantidadMeGusta;
-    }
-    
-    public void addComentario(String text)
-    {
-        comentarios.add(text);
-    }
-    
+
     public String getMensaje()
     {
         return mensaje;
     }
-    
-    public LocalDateTime getMomentoPublicacion()
+      
+    public String toString()
     {
-        return momentoPublicacion;
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += super.toString() + "\n";        
+        
+        cadenaADevolver += mensaje + "\n";
+                           
+        return cadenaADevolver;
     }
     
+    public String devolverHTML()
+    {
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += "    " + super.devolverHTML() + "\n    <br/>";        
+        
+        cadenaADevolver += "\n    " + mensaje + "\n    <br/>" + "\n    <br/>";
+                           
+        return cadenaADevolver;       
+    }
+    
+    public void mostrar()
+    {
+        System.out.println(this);
+    }   
+    
+    public void mostrarHTML()
+    {
+        System.out.println(this.devolverHTML());        
+    }    
 }
