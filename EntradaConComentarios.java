@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class EntradaConComentarios extends Entrada
+public abstract class EntradaConComentarios extends Entrada
 {
     private ArrayList<String> comentarios;
     
@@ -52,10 +52,10 @@ public class EntradaConComentarios extends Entrada
         }
         else {
             //Se recopilan los comentarios
-            cadenaADevolver += "    Comentarios:" + "\n    <br/>\n    <hr>";
+            cadenaADevolver += "        <p>Comentarios:</p>" + "\n        <br/>\n        <hr>";
             for (int i = 0 ; i < comentarios.size() ; i++) {
                 
-                cadenaADevolver += "\n    " + comentarios.get(i) + "\n    <hr>";
+                cadenaADevolver += "\n        <p>" + comentarios.get(i) + "</p>\n        <hr>";
                 
 
             }
@@ -64,13 +64,8 @@ public class EntradaConComentarios extends Entrada
         return cadenaADevolver;    
     }
     
-    public void mostrar()
-    {
-        System.out.println(this);
-    } 
+    public abstract void mostrar();
     
-    public void mostrarHTML()
-    {
-        System.out.println(this.devolverHTML());        
-    }      
+    public abstract void mostrarHTML();
+    
 }

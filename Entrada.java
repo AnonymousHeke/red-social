@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Entrada
+public abstract class Entrada
 {
     private String usuario;
     private LocalDateTime momentoPublicacion;
@@ -50,9 +50,9 @@ public class Entrada
     {
         String cadenaADevolver = "";
         
-        cadenaADevolver += "\n    <h2>" + getUsuario() + "</h2>";
+        cadenaADevolver += "\n    <div class=\"publicacion\">\n        <h2>" + getUsuario() + "</h2>\n        <p>";
         
-        cadenaADevolver += "    " + getCantidadMeGusta()+ " me gusta ";
+        cadenaADevolver += getCantidadMeGusta()+ " me gusta ";
         
         long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
         long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
@@ -62,7 +62,7 @@ public class Entrada
         if (minutosQueHanPasadoDesdeCreacion > 0) {
             cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
         }
-        cadenaADevolver += segundosResiduales + " segundos." + "\n    <br/>\n";            
+        cadenaADevolver += segundosResiduales + " segundos." + "\n        <br/>\n";            
                                           
         return cadenaADevolver;   
     }
@@ -77,13 +77,8 @@ public class Entrada
         return cantidadMeGusta;
     } 
     
-    public void mostrar()
-    {
-        System.out.println(this);
-    }       
+    public abstract void mostrar();
+               
+    public abstract void mostrarHTML();   
     
-    public void mostrarHTML()
-    {
-        System.out.println(this.devolverHTML());        
-    }
 }

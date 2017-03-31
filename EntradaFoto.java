@@ -40,10 +40,10 @@ public class EntradaFoto extends EntradaConComentarios
     {
         String cadenaADevolver = "";
         
-        cadenaADevolver += super.devolverHTML() + "\n    <br/>";
+        cadenaADevolver += super.devolverHTML() + "\n        <p>\n        <br/>";
         
-        cadenaADevolver += "\n    <h3>" + titulo + "</h3>";
-        cadenaADevolver += "\n    <img src=\"" + urlImagen + "\"/>\n    <br/>";
+        cadenaADevolver += "\n        <h3>" + titulo + "</h3>";
+        cadenaADevolver += "\n        <img src=\"" + urlImagen + "\"/>\n    </div>";
                            
         return cadenaADevolver;     
     }

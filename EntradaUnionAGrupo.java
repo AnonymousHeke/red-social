@@ -29,9 +29,9 @@ public class EntradaUnionAGrupo extends Entrada
     {
         String cadenaADevolver = "";
         
-        cadenaADevolver += "    " + super.devolverHTML();        
+        cadenaADevolver += "        " + super.devolverHTML();        
         
-        cadenaADevolver += "    Se ha unido al grupo " + grupo + "\n    <br/>";
+        cadenaADevolver += "        Se ha unido al grupo " + grupo + "\n        <br/>\n    </div>";
         
         return cadenaADevolver;          
     }

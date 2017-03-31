@@ -32,9 +32,9 @@ public class EntradaTexto extends EntradaConComentarios
     {
         String cadenaADevolver = "";
         
-        cadenaADevolver += "    " + super.devolverHTML() + "\n    <br/>";        
+        cadenaADevolver += "        " + super.devolverHTML() + "\n        </p>\n        <br/>";        
         
-        cadenaADevolver += "\n    " + mensaje + "\n    <br/>" + "\n    <br/>";
+        cadenaADevolver += "\n        <h3>" + mensaje + "</h3>\n        </br><br/>\n    </div>";
                            
         return cadenaADevolver;       
     }
