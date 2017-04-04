@@ -15,7 +15,7 @@ public abstract class Entrada
         cantidadMeGusta = 0;     
     }
     
-    public void meGusta()
+    public void addMeGusta()
     {
         cantidadMeGusta++;
     }    
@@ -24,7 +24,12 @@ public abstract class Entrada
     {
         return momentoPublicacion;
     }
-        
+    
+    public void insertarMomentoPublicacion(LocalDateTime momentoLeido)
+    {
+        momentoPublicacion = momentoLeido;
+    }
+    
     public String toString()
     {
         String cadenaADevolver = "";
@@ -54,12 +59,18 @@ public abstract class Entrada
         
         cadenaADevolver += getCantidadMeGusta()+ " me gusta ";
         
-        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);        
         long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
         long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        long horasQueHanPasadoDesdeCreacion = minutosQueHanPasadoDesdeCreacion / 60;
+        long diasQueHanPasadoDesdeCreacion = horasQueHanPasadoDesdeCreacion / 24;       
         
         cadenaADevolver += "hace ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
+        if (diasQueHanPasadoDesdeCreacion >= 1)
+        {
+            cadenaADevolver += diasQueHanPasadoDesdeCreacion + " dias ";
+        }
+        else if (minutosQueHanPasadoDesdeCreacion < 1440 && minutosQueHanPasadoDesdeCreacion > 0) {
             cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
         }
         cadenaADevolver += segundosResiduales + " segundos." + "\n        <br/>\n";            
