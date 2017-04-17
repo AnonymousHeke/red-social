@@ -72,8 +72,9 @@ public abstract class Entrada
         }
         else if (minutosQueHanPasadoDesdeCreacion < 1440 && minutosQueHanPasadoDesdeCreacion > 0) {
             cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos ";
+            cadenaADevolver += segundosResiduales + " segundos." + "\n        <br/>\n"; 
         }
-        cadenaADevolver += segundosResiduales + " segundos." + "\n        <br/>\n";            
+                   
                                           
         return cadenaADevolver;   
     }
